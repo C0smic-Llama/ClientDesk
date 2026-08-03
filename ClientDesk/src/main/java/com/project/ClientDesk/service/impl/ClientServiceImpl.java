@@ -3,7 +3,7 @@ package com.project.ClientDesk.service.impl;
 import com.project.ClientDesk.dto.ClientRequestDTO;
 import com.project.ClientDesk.dto.ClientResponseDTO;
 import com.project.ClientDesk.entity.Client;
-import com.project.ClientDesk.exception.DuplicateEmailException;
+import com.project.ClientDesk.exception.DuplicateResourceException;
 import com.project.ClientDesk.exception.ResourceNotFoundException;
 import com.project.ClientDesk.mapper.ClientMapper;
 import com.project.ClientDesk.repository.ClientRepository;
@@ -28,7 +28,7 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientResponseDTO createClient(ClientRequestDTO requestDTO) {
         if(clientRepository.existsByEmail(requestDTO.getEmail())){
-            throw new DuplicateEmailException("Email already exists");
+            throw new DuplicateResourceException("Email already exists");
         }
         Client client = clientMapper.toEntity(requestDTO);
         Client savedClient = clientRepository.save(client);
@@ -45,7 +45,7 @@ public class ClientServiceImpl implements ClientService {
 
         if(!existingClient.getEmail().equals(requestDTO.getEmail())
                 && clientRepository.existsByEmail(requestDTO.getEmail())){
-            throw new DuplicateEmailException("Email already exists");
+            throw new DuplicateResourceException("Email already exists");
         }
 
         clientMapper.updateEntityFromDTO(requestDTO, existingClient);
