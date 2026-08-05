@@ -10,6 +10,7 @@ import com.project.ClientDesk.exception.ResourceNotFoundException;
 import com.project.ClientDesk.mapper.ProjectMapper;
 import com.project.ClientDesk.repository.ClientRepository;
 import com.project.ClientDesk.repository.ProjectRepository;
+import com.project.ClientDesk.repository.ProjectServiceRepository;
 import com.project.ClientDesk.repository.UserRepository;
 import com.project.ClientDesk.service.ProjectService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,6 +32,7 @@ public class ProjectServiceImpl implements ProjectService {
     private final ProjectRepository projectRepository;
     private final UserRepository userRepository;
     private final ClientRepository clientRepository;
+    private final ProjectServiceRepository projectServiceRepository;
     private final ProjectMapper projectMapper;
 
 
@@ -104,7 +107,10 @@ public class ProjectServiceImpl implements ProjectService {
 
         Project project = projectRepository.findById(projectId).orElseThrow(()->
                 new ResourceNotFoundException("Project not found with ID : "+projectId));
-        return projectMapper.toResponseDTO(project);
+
+
+
+        return mapToResponse(project);
     }
 
     @Override
@@ -144,5 +150,18 @@ public class ProjectServiceImpl implements ProjectService {
 
         return projectRepository.findByAssignedUsersContaining(user, pageable)
                 .map(projectMapper::toResponseDTO);
+    }
+
+    private BigDecimal calculateProjectTotal(Project project){
+        return projectServiceRepository.findByProject(project)
+                .stream()
+                .map(com.project.ClientDesk.entity.ProjectService::getLineTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    private ProjectResponseDTO mapToResponse(Project project){
+        ProjectResponseDTO dto = projectMapper.toResponseDTO(project);
+        dto.setTotalCost(calculateProjectTotal(project));
+        return dto;
     }
 }

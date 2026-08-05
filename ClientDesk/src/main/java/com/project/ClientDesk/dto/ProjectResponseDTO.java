@@ -26,6 +26,8 @@ public class ProjectResponseDTO {
     private Long clientId;
     private String clientName;
     private Set<UserEssentialDTO> assignedUsers;
+    private BigDecimal totalCost;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
 }
