@@ -2,35 +2,32 @@ package com.project.ClientDesk.dto;
 
 
 import com.project.ClientDesk.entity.Invoice;
+import com.project.ClientDesk.entity.Payment;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class InvoiceResponseDTO {
-
+public class PaymentResponseDTO {
 
     private Long id;
+    private String receiptNumber;
+    private Long invoiceId;
     private String invoiceNumber;
-    private LocalDate invoiceDate;
-    private LocalDate dueDate;
     private Invoice.InvoiceStatus status;
-
-    private String projectName;
-
     private String clientName;
-
-    private BigDecimal taxableAmount;
-    private BigDecimal gstAmount;
-    private BigDecimal discount;
-    private BigDecimal grandTotal;
+    private String projectName;
+    private BigDecimal amount;
+    private LocalDate paymentDate;
+    private Payment.PaymentMethod paymentMethod;
+    private String transactionReference;
     private BigDecimal totalPaid;
     private BigDecimal pendingAmount;
+    private String remarks;
 
 }
