@@ -1,11 +1,13 @@
 package com.project.ClientDesk.repository;
 
+import com.project.ClientDesk.entity.MostRequestedServices;
 import com.project.ClientDesk.entity.Project;
 import com.project.ClientDesk.entity.ProjectService;
 import com.project.ClientDesk.entity.ServiceCatalogue;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -22,4 +24,6 @@ public interface ProjectServiceRepository extends JpaRepository<ProjectService,L
 
     void deleteByProjectAndServiceCatalogue(Project project,ServiceCatalogue serviceCatalogue);
 
+    @Query("SELECT ps.serviceCatalogue.id,ps.serviceCatalogue.serviceName,COUNT(ps) FROM ProjectService ps GROUP BY ps.serviceCatalogue.id, ps.serviceCatalogue.serviceName ORDER BY COUNT(ps) DESC")
+    List<MostRequestedServices> findMostRequestedServices();
 }

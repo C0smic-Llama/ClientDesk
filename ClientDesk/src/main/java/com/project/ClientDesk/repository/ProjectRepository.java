@@ -17,6 +17,8 @@ public interface ProjectRepository extends JpaRepository<Project,Long> {
 
     boolean existsByProjectName(String projectName);
 
+    long countByStatus(Project.ProjectStatus status);
+
     Page<Project> findByStatus(Project.ProjectStatus status, Pageable pageable);
 
     Page<Project> findByClient(Client client, Pageable pageable);

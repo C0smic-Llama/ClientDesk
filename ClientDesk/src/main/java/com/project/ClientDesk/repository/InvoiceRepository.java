@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -40,5 +41,13 @@ public interface InvoiceRepository extends JpaRepository<Invoice,Long> {
     long countByStatus(Invoice.InvoiceStatus status);
 
     Page<Invoice> findByDueDateBefore(LocalDate date, Pageable pageable);
+
+    @Query("SELECT COALESCE(SUM(i.grandTotal-COALESCE(" +
+            "(SELECT SUM(p.amount)" +
+            "FROM Payment p WHERE p.invoice = i),0)),0) FROM Invoice i WHERE i.status <>:status")
+    BigDecimal getTotalOutstandingAmount(
+            @Param("status")
+            Invoice.InvoiceStatus status);
+
 
 }

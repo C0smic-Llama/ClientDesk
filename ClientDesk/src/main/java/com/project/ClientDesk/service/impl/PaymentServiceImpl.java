@@ -10,6 +10,7 @@ import com.project.ClientDesk.repository.InvoiceRepository;
 import com.project.ClientDesk.repository.PaymentRepository;
 import com.project.ClientDesk.service.PaymentService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Year;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -71,11 +72,15 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public PaymentResponseDTO createPayment(PaymentRequestDTO requestDTO) {
 
+        log.info("Creating Payment for invoice ID : {}",requestDTO.getInvoiceId());
+
         Invoice invoice = getInvoice(requestDTO.getInvoiceId());
         Payment payment = paymentMapper.toEntity(requestDTO);
         payment.setInvoice(invoice);
         payment.setReceiptNumber(generateReceiptNumber());
         Payment savedPayment = paymentRepository.save(payment);
+
+        log.info("Payment created successfully. Payment ID : {},Invoice ID : {}, Amount : {}",savedPayment.getId(),savedPayment.getInvoice().getId(),savedPayment.getAmount());
         updateInvoiceStatus(invoice);
 
         BigDecimal totalPaid = getTotalPaid(invoice);

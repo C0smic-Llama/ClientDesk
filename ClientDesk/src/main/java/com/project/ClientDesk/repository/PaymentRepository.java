@@ -1,7 +1,9 @@
 package com.project.ClientDesk.repository;
 
 import com.project.ClientDesk.entity.Invoice;
+import com.project.ClientDesk.entity.MonthlyRevenueProjection;
 import com.project.ClientDesk.entity.Payment;
+import com.project.ClientDesk.entity.TopClients;
 import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -48,5 +50,20 @@ public interface PaymentRepository extends JpaRepository<Payment,Long> {
             @Param("clientID")
             Long clientId,
             Pageable pageable);
+
+    @Query("SELECT COAOLESCE(SUM(p.amount),0) FROM Payment p")
+    BigDecimal getTotalRevenue();
+
+
+    @Query(value = "SELECT DATE_FORMAT(p.payment_date, '%Y-%m') AS period," +
+            "COALESCE(SUM(p.amount),0) AS revenue" +
+            "FROM payments p" +
+            "GROUP BY DATE_FORMAT(p.payment_date,'%Y-%m')" +
+            "ORDER BY period ", nativeQuery = true)
+    List<MonthlyRevenueProjection> getMonthlyRevenue();
+
+    @Query("SELECT p.invoice.project.client.id,p.invoice.project.client.companyName,SUM(p.amount) FROM Payment p GROUP BY p.invoice.project.client.id,p.invoice.project.client.companyName ORDER BY SUM(p.amount) DESC")
+    List<TopClients> findTopClientsByRevenue();
+
 
 }

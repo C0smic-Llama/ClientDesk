@@ -14,6 +14,7 @@ import com.project.ClientDesk.repository.InvoiceRepository;
 import com.project.ClientDesk.repository.ProjectServiceRepository;
 import com.project.ClientDesk.service.InvoicePdfService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.Locale;
 
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class InvoicePdfServiceImpl implements InvoicePdfService {
@@ -39,6 +41,8 @@ public class InvoicePdfServiceImpl implements InvoicePdfService {
 
     @Override
     public byte[] generateInvoicePdf(Long invoiceId) {
+
+        log.info("Generating invoice PDF for invoice with ID : {}",invoiceId);
         Invoice invoice = invoiceRepository.findById(invoiceId).orElseThrow(() ->
                 new ResourceNotFoundException("Invoice does not exist with ID : " + invoiceId));
 
@@ -171,10 +175,12 @@ public class InvoicePdfServiceImpl implements InvoicePdfService {
             document.add(footer);
             document.close();
 
+            log.info("Invoice PDF generated successfully for Invoice : {}",invoice.getInvoiceNumber());
             return outputStream.toByteArray();
 
 
         } catch (Exception ex) {
+            log.error("Failed to generate PDF for invoice ID : {}",invoiceId,ex);
             throw new RuntimeException("Failer to generate the invoice PDF", ex);
         }
 

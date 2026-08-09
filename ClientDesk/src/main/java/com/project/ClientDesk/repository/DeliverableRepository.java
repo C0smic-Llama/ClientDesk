@@ -44,4 +44,6 @@ public interface DeliverableRepository extends JpaRepository<Deliverable,Long> {
             Deliverable.DeliverableStatus status,
             Pageable pageable);
 
+    long countByStatus(Deliverable.DeliverableStatus status);
+
 }
