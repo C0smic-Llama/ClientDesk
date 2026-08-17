@@ -49,6 +49,7 @@ public class ServiceCatalogue extends Base {
         DIGITAL_MARKETING,
         WEB_DEVELOPMENT,
         PHOTOGRAPHY,
+        CONTENT_WRITING,
         OTHER
     }
 }

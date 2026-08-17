@@ -2,6 +2,7 @@ package com.project.ClientDesk.dto;
 
 
 import com.project.ClientDesk.entity.Client;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -25,6 +26,7 @@ public class ClientRequestDTO {
     @NotBlank(message  = "Contact Person is required")
     private String contactPerson;
 
+    @Email(message = "Please enter a valid email id")
     @NotBlank(message  = "Email is required")
     private String email;
 

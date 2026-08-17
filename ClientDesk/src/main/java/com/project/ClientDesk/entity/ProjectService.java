@@ -50,7 +50,8 @@ public class ProjectService extends Base{
     private String remarks;
 
     public BigDecimal getLineTotal(){
+
         return agreedPrice.multiply(BigDecimal.valueOf(quantity)).subtract(discount);
     }
 
-}
+}                                                                                                                                                                             

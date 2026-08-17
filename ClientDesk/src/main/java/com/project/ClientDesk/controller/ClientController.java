@@ -25,24 +25,34 @@ public class ClientController {
     public ResponseEntity<ClientResponseDTO> createClient(
             @Valid
             @RequestBody
-            ClientRequestDTO requestDTO){
+            ClientRequestDTO requestDTO) {
         ClientResponseDTO response = clientService.createClient(requestDTO);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+
+    @GetMapping
+    public ResponseEntity<Page<ClientResponseDTO>> getAllClients(
+            @PageableDefault(size = 10, sort = "companyName")
+            Pageable pageable) {
+        return ResponseEntity.ok(clientService.getAllClients(pageable));
+
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<ClientResponseDTO>> searchClients(
+            @RequestParam
+            String keyword,
+            @PageableDefault(size = 10, sort = "companyName")
+            Pageable pageable) {
+        return ResponseEntity.ok(clientService.searchClients(keyword, pageable));
     }
 
     @GetMapping("/{clientId}")
     public ResponseEntity<ClientResponseDTO> getClientById(
             @PathVariable
-            Long clientId){
+            Long clientId) {
         return ResponseEntity.ok(clientService.getClientById(clientId));
-    }
-
-    @GetMapping
-    public ResponseEntity<Page<ClientResponseDTO>>  getAllClients(
-            @PageableDefault(size = 10, sort = "companyName")
-            Pageable pageable){
-        return ResponseEntity.ok(clientService.getAllClients(pageable));
-
     }
 
     @PutMapping("/{clientId}")
@@ -51,37 +61,28 @@ public class ClientController {
             Long clientId,
             @Valid
             @RequestBody
-            ClientRequestDTO requestDTO){
-        return ResponseEntity.ok(clientService.updateClient(clientId,requestDTO));
+            ClientRequestDTO requestDTO) {
+        return ResponseEntity.ok(clientService.updateClient(clientId, requestDTO));
 
     }
 
     @DeleteMapping("/{clientId}")
     public ResponseEntity<Void> deleteClient(
             @PathVariable
-            Long clientId){
+            Long clientId) {
         clientService.deleteClient(clientId);
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<Page<ClientResponseDTO>> searchClients(
-            @RequestParam
-            String keyword,
-            @PageableDefault(size = 10, sort = "companyName")
-            Pageable pageable){
-        return ResponseEntity.ok(clientService.searchClients(keyword, pageable));
-    }
 
     @GetMapping("/status/{status}")
     public ResponseEntity<Page<ClientResponseDTO>> getClientsbyStatus(
             @PathVariable
             Client.ClientStatus status,
             @PageableDefault(size = 10, sort = "companyName")
-            Pageable pageable){
-        return ResponseEntity.ok(clientService.getClientsByStatus(status,pageable));
+            Pageable pageable) {
+        return ResponseEntity.ok(clientService.getClientsByStatus(status, pageable));
     }
-
 
 
 }

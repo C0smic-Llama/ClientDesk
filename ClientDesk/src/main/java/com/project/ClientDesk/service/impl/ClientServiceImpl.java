@@ -9,12 +9,13 @@ import com.project.ClientDesk.mapper.ClientMapper;
 import com.project.ClientDesk.repository.ClientRepository;
 import com.project.ClientDesk.service.ClientService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -27,6 +28,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientResponseDTO createClient(ClientRequestDTO requestDTO) {
+
+        log.info("Creating client : {}",requestDTO.getContactPerson());
         if(clientRepository.existsByEmail(requestDTO.getEmail())){
             throw new DuplicateResourceException("Email already exists");
         }
@@ -50,6 +53,8 @@ public class ClientServiceImpl implements ClientService {
 
         clientMapper.updateEntityFromDTO(requestDTO, existingClient);
         Client updatedClient = clientRepository.save(existingClient);
+
+        log.info("Updated client info with ID : {}",updatedClient.getId());
         return clientMapper.toResponseDTO(updatedClient);
     }
 

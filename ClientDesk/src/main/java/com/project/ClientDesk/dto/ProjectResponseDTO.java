@@ -20,7 +20,7 @@ public class ProjectResponseDTO {
     private String description;
     private Project.ProjectStatus status;
     private LocalDate startDate;
-    private LocalDate deadLine;
+    private LocalDate deadline;
     private BigDecimal quota;
     private String notes;
     private Long clientId;

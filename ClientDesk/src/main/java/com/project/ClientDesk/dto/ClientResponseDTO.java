@@ -24,7 +24,4 @@ public class ClientResponseDTO {
     private String address;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
-
-
 }

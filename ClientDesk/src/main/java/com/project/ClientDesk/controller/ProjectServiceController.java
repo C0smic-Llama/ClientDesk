@@ -30,7 +30,7 @@ public class ProjectServiceController {
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<ProjectServiceResponseDTO> updateProjectService(
             @PathVariable
             Long id,
@@ -40,7 +40,7 @@ public class ProjectServiceController {
         return ResponseEntity.ok(projectServiceService.updateProjectService(id, requestDTO));
     }
 
-    @DeleteMapping
+    @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteProjectService(
             @PathVariable
             Long id){
@@ -55,7 +55,7 @@ public class ProjectServiceController {
         return ResponseEntity.ok(projectServiceService.getProjectServiceById(id));
     }
 
-    @GetMapping("/{projectId}")
+    @GetMapping("/project/{projectId}")
     public ResponseEntity<Page<ProjectServiceResponseDTO>> getServicesByProject(
             @PathVariable
             Long projectId,
@@ -63,7 +63,7 @@ public class ProjectServiceController {
         return ResponseEntity.ok(projectServiceService.getAllServicesByProject(projectId, pageable));
     }
 
-    @GetMapping("/{serviceCatalogueID}")
+    @GetMapping("/service/{serviceCatalogueID}")
     public ResponseEntity<Page<ProjectServiceResponseDTO>> getProjectsByService(
             @PathVariable
             Long serviceCatalogueId,
