@@ -18,6 +18,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
+
 @Service
 @RequiredArgsConstructor
 @Transactional
@@ -41,7 +43,9 @@ public class ProjectServiceServiceImpl implements ProjectServiceService {
         }
 
         ProjectService projectService = projectServiceMapper.toEntity(requestDTO);
-
+        if (projectService.getDiscount() == null) {
+            projectService.setDiscount(BigDecimal.ZERO);
+        }
         projectService.setProject(project);
         projectService.setServiceCatalogue(service);
 

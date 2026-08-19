@@ -51,19 +51,28 @@ public interface PaymentRepository extends JpaRepository<Payment,Long> {
             Long clientId,
             Pageable pageable);
 
-    @Query("SELECT COAOLESCE(SUM(p.amount),0) FROM Payment p")
+    @Query("SELECT COALESCE(SUM(p.amount),0) FROM Payment p")
     BigDecimal getTotalRevenue();
 
 
-    @Query(value = "SELECT DATE_FORMAT(p.payment_date, '%Y-%m') AS period," +
-            "COALESCE(SUM(p.amount),0) AS revenue" +
-            "FROM payments p" +
-            "GROUP BY DATE_FORMAT(p.payment_date,'%Y-%m')" +
-            "ORDER BY period ", nativeQuery = true)
+    @Query(value = "SELECT DATE_FORMAT(p.payment_date, '%Y-%m') AS period, " +
+            "COALESCE(SUM(p.amount),0) AS revenue " +
+            "FROM payments p " +
+            "GROUP BY DATE_FORMAT(p.payment_date,'%Y-%m') " +
+            "ORDER BY period", nativeQuery = true)
     List<MonthlyRevenueProjection> getMonthlyRevenue();
 
-    @Query("SELECT p.invoice.project.client.id,p.invoice.project.client.companyName,SUM(p.amount) FROM Payment p GROUP BY p.invoice.project.client.id,p.invoice.project.client.companyName ORDER BY SUM(p.amount) DESC")
-    List<TopClients> findTopClientsByRevenue();
+    @Query("""
+    SELECT
+        p.invoice.project.client.id AS id,
+        p.invoice.project.client.companyName AS companyName,
+        SUM(p.amount) AS value
+    FROM Payment p
+    GROUP BY
+        p.invoice.project.client.id,
+        p.invoice.project.client.companyName
+    ORDER BY SUM(p.amount) DESC
+""")    List<TopClients> findTopClientsByRevenue();
 
 
 }

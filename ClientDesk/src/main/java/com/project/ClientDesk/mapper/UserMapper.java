@@ -3,6 +3,7 @@ package com.project.ClientDesk.mapper;
 
 import com.project.ClientDesk.dto.UserRequestDTO;
 import com.project.ClientDesk.dto.UserResponseDTO;
+import com.project.ClientDesk.dto.UserUpdateRequestDTO;
 import com.project.ClientDesk.entity.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -20,7 +21,7 @@ public interface UserMapper {
     @Mapping(target = "password", ignore = true)
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "updatedAt", ignore = true)
-    void updateEntityFromDTO(UserRequestDTO userRequestDTO,
+    void updateEntityFromDTO(UserUpdateRequestDTO userRequestDTO,
                              @MappingTarget
                              User user);
 }

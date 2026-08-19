@@ -30,7 +30,7 @@ public class DashboardServiceImpl implements DashboardService {
 
 
     @Override
-    public DashboardSummaryDTO getDashbaordSummary() {
+    public DashboardSummaryDTO getDashboardSummary() {
         log.debug("Loading dashboard info");
         long totalClients = clientRepository.count();
 
@@ -60,8 +60,6 @@ public class DashboardServiceImpl implements DashboardService {
                 .paidInvoices(paidInvoices)
                 .partiallyPaidInvoices(partiallyPaidInvoices)
                 .overdueInvoices(overdueInvoices)
-                .pendingDeliverables(pendingDeliverables)
-                .completedDeliverables(completedDeliverables)
                 .build();
     }
 
@@ -77,7 +75,7 @@ public class DashboardServiceImpl implements DashboardService {
     }
 
     @Override
-    public List<DashboardRankingDTO> getTopCLients() {
+    public List<DashboardRankingDTO> getTopClients() {
         List<TopClients> results = paymentRepository.findTopClientsByRevenue();
 
         return results.stream()

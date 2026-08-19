@@ -31,30 +31,30 @@ public class PaymentServiceImpl implements PaymentService {
     private final PaymentMapper paymentMapper;
 
 
-    private String generateReceiptNumber(){
-        long count = paymentRepository.count()+1;
-        return String.format("RCPT-%d=-%05d", Year.now().getValue(),count);
+    private String generateReceiptNumber() {
+        long count = paymentRepository.count() + 1;
+        return String.format("RCPT-%d=-%05d", Year.now().getValue(), count);
     }
 
-    private Invoice getInvoice(Long invoiceId){
-        return invoiceRepository.findById(invoiceId).orElseThrow(()->
-                new ResourceNotFoundException("Invoice not found with ID : "+invoiceId));
+    private Invoice getInvoice(Long invoiceId) {
+        return invoiceRepository.findById(invoiceId).orElseThrow(() ->
+                new ResourceNotFoundException("Invoice not found with ID : " + invoiceId));
     }
 
-    private BigDecimal getTotalPaid(Invoice invoice){
+    private BigDecimal getTotalPaid(Invoice invoice) {
         BigDecimal totalPaid = paymentRepository.getTotalPaidByInvoice(invoice);
-        return totalPaid == null?BigDecimal.ZERO:totalPaid;
+        return totalPaid == null ? BigDecimal.ZERO : totalPaid;
     }
 
-    private BigDecimal getPendingAmount(Invoice invoice){
+    private BigDecimal getPendingAmount(Invoice invoice) {
         return invoice.getGrandTotal().subtract(getTotalPaid(invoice));
     }
 
-    private void updateInvoiceStatus(Invoice invoice){
+    private void updateInvoiceStatus(Invoice invoice) {
         BigDecimal totalPaid = getTotalPaid(invoice);
-        if(totalPaid.compareTo(invoice.getGrandTotal()) >= 0)
+        if (totalPaid.compareTo(invoice.getGrandTotal()) >= 0)
             invoice.setStatus(Invoice.InvoiceStatus.PAID);
-        else if(totalPaid.compareTo(BigDecimal.ZERO)>0)
+        else if (totalPaid.compareTo(BigDecimal.ZERO) > 0)
             invoice.setStatus(Invoice.InvoiceStatus.PARTIALLY_PAID);
         else
             invoice.setStatus(Invoice.InvoiceStatus.SENT);
@@ -62,7 +62,7 @@ public class PaymentServiceImpl implements PaymentService {
         invoiceRepository.save(invoice);
     }
 
-    private PaymentResponseDTO buildResponse(Payment payment){
+    private PaymentResponseDTO buildResponse(Payment payment) {
         PaymentResponseDTO responseDTO = paymentMapper.toResponseDTO(payment);
         responseDTO.setTotalPaid(getTotalPaid(payment.getInvoice()));
         responseDTO.setPendingAmount(getPendingAmount(payment.getInvoice()));
@@ -72,7 +72,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Override
     public PaymentResponseDTO createPayment(PaymentRequestDTO requestDTO) {
 
-        log.info("Creating Payment for invoice ID : {}",requestDTO.getInvoiceId());
+        log.info("Creating Payment for invoice ID : {}", requestDTO.getInvoiceId());
 
         Invoice invoice = getInvoice(requestDTO.getInvoiceId());
         Payment payment = paymentMapper.toEntity(requestDTO);
@@ -80,7 +80,7 @@ public class PaymentServiceImpl implements PaymentService {
         payment.setReceiptNumber(generateReceiptNumber());
         Payment savedPayment = paymentRepository.save(payment);
 
-        log.info("Payment created successfully. Payment ID : {},Invoice ID : {}, Amount : {}",savedPayment.getId(),savedPayment.getInvoice().getId(),savedPayment.getAmount());
+        log.info("Payment created successfully. Payment ID : {},Invoice ID : {}, Amount : {}", savedPayment.getId(), savedPayment.getInvoice().getId(), savedPayment.getAmount());
         updateInvoiceStatus(invoice);
 
         BigDecimal totalPaid = getTotalPaid(invoice);
@@ -92,9 +92,9 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public PaymentResponseDTO updatePayment(Long id, PaymentRequestDTO requestDTO) {
-        Payment payment = paymentRepository.findById(id).orElseThrow(()->
-                new ResourceNotFoundException("Payment not found with ID : "+id));
-        Invoice invoice  = getInvoice(requestDTO.getInvoiceId());
+        Payment payment = paymentRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Payment not found with ID : " + id));
+        Invoice invoice = getInvoice(requestDTO.getInvoiceId());
         paymentMapper.updateEntityFromDTO(requestDTO, payment);
         payment.setInvoice(invoice);
         Payment updatedPayment = paymentRepository.save(payment);
@@ -105,26 +105,34 @@ public class PaymentServiceImpl implements PaymentService {
 
     @Override
     public void deletePayment(Long id) {
-        Payment payment = paymentRepository.findById(id).orElseThrow(()->
-                new ResourceNotFoundException("Payment not found with ID : "+id));
+        Payment payment = paymentRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Payment not found with ID : " + id));
         Invoice invoice = payment.getInvoice();
         paymentRepository.delete(payment);
         updateInvoiceStatus(invoice);
     }
 
     @Override
+    public Page<PaymentResponseDTO> getAllPayments(Pageable pageable) {
+
+        return paymentRepository
+                .findAll(pageable)
+                .map(paymentMapper::toResponseDTO);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public PaymentResponseDTO getPaymentById(Long id) {
-        Payment payment = paymentRepository.findById(id).orElseThrow(()->
-                new ResourceNotFoundException("Payment not foudn with ID : "+id));
+        Payment payment = paymentRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Payment not foudn with ID : " + id));
         return buildResponse(payment);
     }
 
     @Override
     @Transactional(readOnly = true)
     public PaymentResponseDTO getPaymentByReceiptNumber(String receiptNumber) {
-        Payment payment = paymentRepository.findByReceiptNumber(receiptNumber).orElseThrow(()->
-                new ResourceNotFoundException("Payment not found with receiptNumber : "+receiptNumber));
+        Payment payment = paymentRepository.findByReceiptNumber(receiptNumber).orElseThrow(() ->
+                new ResourceNotFoundException("Payment not found with receiptNumber : " + receiptNumber));
         PaymentResponseDTO responseDTO = paymentMapper.toResponseDTO(payment);
         responseDTO.setTotalPaid(getTotalPaid(payment.getInvoice()));
         responseDTO.setPendingAmount(getPendingAmount(payment.getInvoice()));
@@ -135,7 +143,7 @@ public class PaymentServiceImpl implements PaymentService {
     @Transactional(readOnly = true)
     public Page<PaymentResponseDTO> getPaymentsByInvoice(Long invoiceId, Pageable pageable) {
         Invoice invoice = getInvoice(invoiceId);
-        return paymentRepository.findByInvoice(invoice,pageable)
+        return paymentRepository.findByInvoice(invoice, pageable)
                 .map(this::buildResponse);
     }
 

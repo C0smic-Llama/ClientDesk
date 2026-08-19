@@ -9,6 +9,7 @@ import com.project.ClientDesk.exception.DuplicateResourceException;
 import com.project.ClientDesk.exception.ResourceNotFoundException;
 import com.project.ClientDesk.mapper.InvoiceMapper;
 import com.project.ClientDesk.repository.InvoiceRepository;
+import com.project.ClientDesk.repository.PaymentRepository;
 import com.project.ClientDesk.repository.ProjectRepository;
 import com.project.ClientDesk.repository.ProjectServiceRepository;
 import com.project.ClientDesk.service.InvoiceService;
@@ -34,95 +35,118 @@ public class InvoiceServiceImpl implements InvoiceService {
     private final ProjectRepository projectRepository;
     private final ProjectServiceRepository projectServiceRepository;
     private final InvoiceMapper invoiceMapper;
+    private final PaymentRepository paymentRepository;
 
-
-    private String generateInvoiceNumber(){
-        long count = invoiceRepository.count()+1;
-        return String.format("INV-%d-%05d", Year.now().getValue(),count);
+    private String generateInvoiceNumber() {
+        long count = invoiceRepository.count() + 1;
+        return String.format("INV-%d-%05d", Year.now().getValue(), count);
     }
 
-    private BigDecimal calculateTotal(Project project){
+    private BigDecimal calculateTotal(Project project) {
         List<ProjectService> projectServiceList = projectServiceRepository.findByProject(project);
         return projectServiceList.stream()
                 .map(ProjectService::getLineTotal)
-                .reduce(BigDecimal.ZERO,BigDecimal::add);
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    private BigDecimal calculateGSTAmount(BigDecimal grandTotal, BigDecimal gstPercentage){
-        if(grandTotal==null){
+    private BigDecimal calculateGSTAmount(BigDecimal grandTotal, BigDecimal gstPercentage) {
+        if (grandTotal == null) {
             return BigDecimal.ZERO;
         }
 
         return grandTotal.multiply(gstPercentage)
-                .divide(BigDecimal.valueOf(100).add(gstPercentage),2, RoundingMode.HALF_UP);
+                .divide(BigDecimal.valueOf(100).add(gstPercentage), 2, RoundingMode.HALF_UP);
     }
 
-    private BigDecimal calculateTaxableAmount(BigDecimal grandTotal, BigDecimal gstAmount){
+    private BigDecimal calculateTaxableAmount(BigDecimal grandTotal, BigDecimal gstAmount) {
         return grandTotal.subtract(gstAmount);
     }
-    private void calculateInvoiceAmounts(Invoice invoice, Project project){
+
+    private void calculateInvoiceAmounts(Invoice invoice, Project project) {
+        BigDecimal gstPercentage = BigDecimal.valueOf(18);
+
         BigDecimal projectTotal = calculateTotal(project);
 
         BigDecimal grandTotal = projectTotal.subtract(invoice.getDiscount());
         invoice.setGrandTotal(grandTotal);
+        invoice.setGstPercentage(gstPercentage);
 
-        BigDecimal gstAmount = calculateGSTAmount(grandTotal,invoice.getGstPercentage());
+        BigDecimal gstAmount = calculateGSTAmount(grandTotal, gstPercentage);
         invoice.setGstAmount(gstAmount);
 
         invoice.setTaxableAmount(grandTotal.subtract(gstAmount));
     }
 
-    private Project getProject(Long projectId){
-        return projectRepository.findById(projectId).orElseThrow(()->
-                new ResourceNotFoundException("Project not found with ID : "+projectId));
+    private Project getProject(Long projectId) {
+        return projectRepository.findById(projectId).orElseThrow(() ->
+                new ResourceNotFoundException("Project not found with ID : " + projectId));
     }
 
-    private void validateInvoice(Project project){
-        if(invoiceRepository.findByProject(project).isPresent()){
+    private void validateInvoice(Project project) {
+        if (invoiceRepository.findByProject(project).isPresent()) {
             throw new DuplicateResourceException("Invoice already exists for this project");
         }
     }
 
+    private BigDecimal getTotalPaid(Invoice invoice) {
+        BigDecimal totalPaid =
+                paymentRepository.getTotalPaidByInvoice(invoice);
+
+        return totalPaid == null
+                ? BigDecimal.ZERO
+                : totalPaid;
+    }
+
+    private BigDecimal getPendingAmount(Invoice invoice) {
+        return invoice.getGrandTotal()
+                .subtract(getTotalPaid(invoice));
+    }
+
     @Override
     public InvoiceResponseDTO createInvoice(InvoiceRequestDTO requestDTO) {
-        Project project  = getProject(requestDTO.getProjectId());
-        validateInvoice(project);
+        Project project = getProject(requestDTO.getProjectId());
+        //validateInvoice(project);
         Invoice invoice = invoiceMapper.toEntity(requestDTO);
         invoice.setProject(project);
         invoice.setInvoiceNumber(generateInvoiceNumber());
         invoice.setInvoiceDate(LocalDate.now());
         invoice.setStatus(Invoice.InvoiceStatus.SENT);
-        if(requestDTO.getDiscount()==null){
+        if (requestDTO.getDiscount() == null) {
             requestDTO.setDiscount(BigDecimal.ZERO);
         }
         invoice.setDiscount(requestDTO.getDiscount());
-        calculateInvoiceAmounts(invoice,project);
+        calculateInvoiceAmounts(invoice, project);
 
         Invoice savedInvoice = invoiceRepository.save(invoice);
-        return invoiceMapper.toResponseDTO(savedInvoice);
+        InvoiceResponseDTO responseDTO =
+                invoiceMapper.toResponseDTO(savedInvoice);
+        responseDTO.setTotalPaid(BigDecimal.ZERO);
+        responseDTO.setPendingAmount(savedInvoice.getGrandTotal());
+
+        return responseDTO;
     }
 
     @Override
 
     public InvoiceResponseDTO updateInvoice(Long id, InvoiceRequestDTO requestDTO) {
 
-        Invoice invoice = invoiceRepository.findById(id).orElseThrow(()->
-                new ResourceNotFoundException("Invoice not found with ID : "+id));
-        Project project  = getProject(requestDTO.getProjectId());
+        Invoice invoice = invoiceRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Invoice not found with ID : " + id));
+        Project project = getProject(requestDTO.getProjectId());
 
-        if(!invoice.getProject().getId().equals(project.getId())){
-            if(invoiceRepository.findByProject(project).isPresent()){
+        if (!invoice.getProject().getId().equals(project.getId())) {
+            if (invoiceRepository.findByProject(project).isPresent()) {
                 throw new DuplicateResourceException("Invoice already exists for this project");
             }
         }
-        invoiceMapper.updateEntityFromDTO(requestDTO,invoice);
+        invoiceMapper.updateEntityFromDTO(requestDTO, invoice);
         invoice.setProject(project);
-        if(requestDTO.getDiscount()==null){
+        if (requestDTO.getDiscount() == null) {
             requestDTO.setDiscount(BigDecimal.ZERO);
-        }else{
+        } else {
             invoice.setDiscount(requestDTO.getDiscount());
         }
-        calculateInvoiceAmounts(invoice,project);
+        calculateInvoiceAmounts(invoice, project);
         Invoice updatedInvoice = invoiceRepository.save(invoice);
         return invoiceMapper.toResponseDTO(updatedInvoice);
 
@@ -131,8 +155,8 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Override
     public void deleteInvoice(Long id) {
 
-        Invoice invoice = invoiceRepository.findById(id).orElseThrow(()->
-                new ResourceNotFoundException("Invoice not found with ID : "+id));
+        Invoice invoice = invoiceRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("Invoice not found with ID : " + id));
         invoiceRepository.delete(invoice);
 
     }
@@ -140,15 +164,28 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Override
     public InvoiceResponseDTO getInvoiceById(Long id) {
 
-        Invoice invoice = invoiceRepository.findById(id).orElseThrow(()->
-                new ResourceNotFoundException("Invoice not found with ID : "+id ));
-        return invoiceMapper.toResponseDTO(invoice);
+        Invoice invoice = invoiceRepository.findById(id).orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Invoice not found with ID : " + id
+                        ));
+        InvoiceResponseDTO responseDTO =
+                invoiceMapper.toResponseDTO(invoice);
+        BigDecimal totalPaid = paymentRepository
+                .getTotalPaidByInvoice(invoice);
+        if (totalPaid == null) {
+            totalPaid = BigDecimal.ZERO;
+        }
+        BigDecimal pendingAmount =
+                invoice.getGrandTotal().subtract(totalPaid);
+        responseDTO.setTotalPaid(totalPaid);
+        responseDTO.setPendingAmount(pendingAmount);
+        return responseDTO;
     }
 
     @Override
     public InvoiceResponseDTO getInvoiceByNumber(String invoiceNumber) {
-        Invoice invoice = invoiceRepository.findByInvoiceNumber(invoiceNumber).orElseThrow(()->
-                new ResourceNotFoundException("Invoice not found with invoice number : "+invoiceNumber));
+        Invoice invoice = invoiceRepository.findByInvoiceNumber(invoiceNumber).orElseThrow(() ->
+                new ResourceNotFoundException("Invoice not found with invoice number : " + invoiceNumber));
         return invoiceMapper.toResponseDTO(invoice);
 
     }
@@ -156,9 +193,15 @@ public class InvoiceServiceImpl implements InvoiceService {
     @Override
     public InvoiceResponseDTO getInvoiceByProject(Long projectId) {
         Project project = getProject(projectId);
-        Invoice invoice = invoiceRepository.findByProject(project).orElseThrow(()->
-                new ResourceNotFoundException("Invoice not found for the projectId : "+projectId));
+        Invoice invoice = invoiceRepository.findByProject(project).orElseThrow(() ->
+                new ResourceNotFoundException("Invoice not found for the projectId : " + projectId));
         return invoiceMapper.toResponseDTO(invoice);
+    }
+
+    @Override
+    public Page<InvoiceResponseDTO> getAllInvoices(Pageable pageable) {
+        return invoiceRepository.findAll(pageable)
+                .map(invoiceMapper::toResponseDTO);
     }
 
     @Override
@@ -169,25 +212,25 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public Page<InvoiceResponseDTO> getInvoicesByStatus(Invoice.InvoiceStatus status, Pageable pageable) {
-        return invoiceRepository.getByStatus(status,pageable)
+        return invoiceRepository.getByStatus(status, pageable)
                 .map(invoiceMapper::toResponseDTO);
     }
 
     @Override
     public Page<InvoiceResponseDTO> getInvoicesByInvoiceDateRange(LocalDate startDate, LocalDate endDate, Pageable pageable) {
-        return invoiceRepository.findByInvoiceDateBetween(startDate,endDate,pageable)
+        return invoiceRepository.findByInvoiceDateBetween(startDate, endDate, pageable)
                 .map(invoiceMapper::toResponseDTO);
     }
 
     @Override
     public Page<InvoiceResponseDTO> getInvoicesByDueDateRange(LocalDate startDate, LocalDate endDate, Pageable pageable) {
-        return invoiceRepository.findByDueDateBetween(startDate,endDate,pageable)
+        return invoiceRepository.findByDueDateBetween(startDate, endDate, pageable)
                 .map(invoiceMapper::toResponseDTO);
     }
 
     @Override
     public Page<InvoiceResponseDTO> getOverdueInvoices(Pageable pageable) {
-        return invoiceRepository.findByDueDateBeforeAndStatusNot(LocalDate.now(), Invoice.InvoiceStatus.PAID,pageable)
+        return invoiceRepository.findByDueDateBeforeAndStatusNot(LocalDate.now(), Invoice.InvoiceStatus.PAID, pageable)
                 .map(invoiceMapper::toResponseDTO);
     }
 }

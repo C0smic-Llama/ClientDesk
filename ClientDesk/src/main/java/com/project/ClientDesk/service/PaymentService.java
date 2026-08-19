@@ -13,6 +13,7 @@ public interface PaymentService {
     PaymentResponseDTO createPayment(PaymentRequestDTO requestDTO);
     PaymentResponseDTO updatePayment(Long id, PaymentRequestDTO requestDTO);
     void deletePayment(Long id);
+    Page<PaymentResponseDTO> getAllPayments(Pageable pageable);
     PaymentResponseDTO getPaymentById(Long id);
     PaymentResponseDTO getPaymentByReceiptNumber(String receiptNumber);
     Page<PaymentResponseDTO> getPaymentsByInvoice(Long invoiceId, Pageable pageable);

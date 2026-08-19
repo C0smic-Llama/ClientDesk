@@ -2,6 +2,7 @@ package com.project.ClientDesk.service.impl;
 
 import com.project.ClientDesk.dto.UserRequestDTO;
 import com.project.ClientDesk.dto.UserResponseDTO;
+import com.project.ClientDesk.dto.UserUpdateRequestDTO;
 import com.project.ClientDesk.entity.User;
 import com.project.ClientDesk.exception.DuplicateResourceException;
 import com.project.ClientDesk.exception.ResourceNotFoundException;
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserResponseDTO updateUser(Long id, UserRequestDTO userRequestDTO) {
+    public UserResponseDTO updateUser(Long id, UserUpdateRequestDTO userRequestDTO) {
         User existingUser = userRepository.findById(id).orElseThrow(()->
                 new ResourceNotFoundException("User not found with Id : "+id));
 
@@ -46,6 +47,10 @@ public class UserServiceImpl implements UserService {
             throw new DuplicateResourceException("Email already exists");
         }
         userMapper.updateEntityFromDTO(userRequestDTO, existingUser);
+
+        if(userRequestDTO.getPassword()!=null && !userRequestDTO.getPassword().isBlank()){
+            existingUser.setPassword(passwordEncoder.encode(userRequestDTO.getPassword()));
+        }
         User updatedUser = userRepository.save(existingUser);
         return userMapper.toResponseDTO(updatedUser);
     }

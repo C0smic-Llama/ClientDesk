@@ -25,8 +25,8 @@ public class Invoice extends Base {
     @Column(nullable = false, unique = true, length = 35)
     private String invoiceNumber;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id", nullable = false, unique = true)
+    @ManyToOne(fetch = FetchType.LAZY,optional = false)
+    @JoinColumn(name = "project_id", nullable = false)
     private Project project;
 
     @Column(nullable = false)

@@ -9,8 +9,8 @@ import java.util.List;
 public interface DashboardService {
 
 
-    DashboardSummaryDTO getDashbaordSummary();
+    DashboardSummaryDTO getDashboardSummary();
     List<DashboardRevenueDTO> getRevenue();
-    List<DashboardRankingDTO> getTopCLients();
+    List<DashboardRankingDTO> getTopClients();
     List<DashboardRankingDTO> getMostRequestedServices();
 }

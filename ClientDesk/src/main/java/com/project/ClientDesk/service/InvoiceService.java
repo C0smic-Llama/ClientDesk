@@ -23,6 +23,8 @@ public interface InvoiceService {
 
     InvoiceResponseDTO getInvoiceByProject(Long projectId);
 
+    Page<InvoiceResponseDTO> getAllInvoices(Pageable pageable);
+
     Page<InvoiceResponseDTO> getInvoicesByClient(Long clientId, Pageable pageable);
 
     Page<InvoiceResponseDTO> getInvoicesByStatus(Invoice.InvoiceStatus status, Pageable pageable);

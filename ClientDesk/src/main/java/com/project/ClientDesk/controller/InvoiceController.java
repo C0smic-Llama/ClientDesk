@@ -55,6 +55,12 @@ public class InvoiceController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping
+    public ResponseEntity<Page<InvoiceResponseDTO>> getAllInvoices(
+            Pageable pageable) {
+        return ResponseEntity.ok(invoiceService.getAllInvoices(pageable));
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<InvoiceResponseDTO> getInvoiceById(
             @PathVariable
@@ -112,6 +118,7 @@ public class InvoiceController {
         return ResponseEntity.ok(invoiceService.getInvoicesByDueDateRange(startDate, endDate, pageable));
     }
 
+    @GetMapping("/{invoiceId}/pdf")
     public ResponseEntity<byte[]> downloadInvoice(
             @PathVariable
             Long invoiceId){

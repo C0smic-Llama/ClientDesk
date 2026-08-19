@@ -3,7 +3,7 @@ package com.project.ClientDesk.entity;
 import java.math.BigDecimal;
 
 public interface TopClients {
-    long getId();
+    Long getId();
     String getCompanyName();
     BigDecimal getValue();
 }

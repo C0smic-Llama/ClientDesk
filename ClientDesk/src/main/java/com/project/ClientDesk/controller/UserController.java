@@ -3,6 +3,7 @@ package com.project.ClientDesk.controller;
 
 import com.project.ClientDesk.dto.UserRequestDTO;
 import com.project.ClientDesk.dto.UserResponseDTO;
+import com.project.ClientDesk.dto.UserUpdateRequestDTO;
 import com.project.ClientDesk.entity.User;
 import com.project.ClientDesk.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -36,13 +37,13 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<UserResponseDTO> updateUser(
-            @PathVariable
-            Long id,
+            @PathVariable Long id,
             @Valid
-            @RequestBody
-            UserRequestDTO userRequestDTO){
+            @RequestBody UserUpdateRequestDTO userRequestDTO) {
 
-        UserResponseDTO updatedUser = userService.updateUser(id, userRequestDTO);
+        UserResponseDTO updatedUser =
+                userService.updateUser(id, userRequestDTO);
+
         return ResponseEntity.ok(updatedUser);
     }
 

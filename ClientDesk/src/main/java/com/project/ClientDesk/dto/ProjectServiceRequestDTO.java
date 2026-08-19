@@ -30,7 +30,7 @@ public class ProjectServiceRequestDTO {
     @DecimalMin(value = "0.0", inclusive = true, message = "Agreed price cannot be negative")
     private BigDecimal agreedPrice;
 
-    @DecimalMin(value = "0.0", inclusive = false, message = "Discount cannot be negative")
+    @DecimalMin(value = "0.0", inclusive = true, message = "Discount cannot be negative")
     private BigDecimal discount;
 
     private String remarks;

@@ -32,6 +32,13 @@ public class PaymentController {
         PaymentResponseDTO responseDTO = paymentService.createPayment(requestDTO);
         return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
+    @GetMapping
+    public ResponseEntity<Page<PaymentResponseDTO>> getAllPayments(
+            Pageable pageable) {
+        return ResponseEntity.ok(
+                paymentService.getAllPayments(pageable)
+        );
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<PaymentResponseDTO> updatePayment(

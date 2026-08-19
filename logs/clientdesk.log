@@ -1,30 +1,25 @@
-2026-08-17T01:35:47.469+05:30  INFO 16032 --- [ClientDesk] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-08-17T01:35:47.589+05:30  INFO 16032 --- [ClientDesk] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-08-17T01:35:47.595+05:30  INFO 16032 --- [ClientDesk] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T01:35:47.600+05:30  INFO 16032 --- [ClientDesk] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-08-17T01:35:47.606+05:30  INFO 16032 --- [ClientDesk] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-08-17T01:36:28.371+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Starting ClientDeskApplication using Java 17.0.12 with PID 30148 (X:\ClientDesk (1)\ClientDesk\target\classes started by irfan in X:\ClientDesk (1))
-2026-08-17T01:36:28.373+05:30 DEBUG 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Running with Spring Boot v3.5.14, Spring v6.2.18
-2026-08-17T01:36:28.373+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : No active profile set, falling back to 1 default profile: "default"
-2026-08-17T01:36:28.410+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-08-17T01:36:28.410+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-08-17T01:36:29.159+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-08-17T01:36:29.248+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 8 JPA repository interfaces.
-2026-08-17T01:36:29.827+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-08-17T01:36:29.839+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-08-17T01:36:29.840+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
-2026-08-17T01:36:29.883+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-08-17T01:36:29.884+05:30  INFO 30148 --- [ClientDesk] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1472 ms
-2026-08-17T01:36:29.995+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-08-17T01:36:30.038+05:30  INFO 30148 --- [ClientDesk] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
-2026-08-17T01:36:30.071+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-08-17T01:36:30.284+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-08-17T01:36:30.310+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-08-17T01:36:30.551+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3118b48d
-2026-08-17T01:36:30.552+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-08-17T01:36:30.586+05:30  WARN 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-08-17T01:36:30.588+05:30  WARN 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2026-08-17T01:36:30.606+05:30  INFO 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+2026-08-20T00:07:18.540+05:30  INFO 19740 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Starting ClientDeskApplication using Java 17.0.12 with PID 19740 (X:\ClientDesk (1)\ClientDesk\target\classes started by irfan in X:\ClientDesk (1))
+2026-08-20T00:07:18.546+05:30 DEBUG 19740 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Running with Spring Boot v3.5.14, Spring v6.2.18
+2026-08-20T00:07:18.547+05:30  INFO 19740 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : No active profile set, falling back to 1 default profile: "default"
+2026-08-20T00:07:18.588+05:30  INFO 19740 --- [ClientDesk] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-20T00:07:18.588+05:30  INFO 19740 --- [ClientDesk] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-20T00:07:20.007+05:30  INFO 19740 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-20T00:07:20.083+05:30  INFO 19740 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 8 JPA repository interfaces.
+2026-08-20T00:07:20.765+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-08-20T00:07:20.778+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-20T00:07:20.778+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
+2026-08-20T00:07:20.827+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-08-20T00:07:20.828+05:30  INFO 19740 --- [ClientDesk] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2240 ms
+2026-08-20T00:07:21.063+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-20T00:07:21.143+05:30  INFO 19740 --- [ClientDesk] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
+2026-08-20T00:07:21.181+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-08-20T00:07:21.660+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-20T00:07:21.811+05:30  INFO 19740 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-20T00:07:24.380+05:30  INFO 19740 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@79f69b31
+2026-08-20T00:07:24.382+05:30  INFO 19740 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-20T00:07:24.431+05:30  WARN 19740 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-20T00:07:24.431+05:30  WARN 19740 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2026-08-20T00:07:24.451+05:30  INFO 19740 --- [ClientDesk] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 8.0
@@ -32,256 +27,13 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2026-08-17T01:36:31.415+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-08-17T01:36:31.504+05:30  INFO 30148 --- [ClientDesk] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T01:36:31.758+05:30 DEBUG 30148 --- [ClientDesk] [restartedMain] c.p.C.s.jwt.JwtAuthenticationFilter      : Filter 'jwtAuthenticationFilter' configured for use
-2026-08-17T01:36:31.814+05:30  INFO 30148 --- [ClientDesk] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2026-08-17T01:36:31.814+05:30  WARN 30148 --- [ClientDesk] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2026-08-17T01:36:31.912+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-08-17T01:36:32.793+05:30  WARN 30148 --- [ClientDesk] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-08-17T01:36:33.370+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-08-17T01:36:33.400+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-08-17T01:36:33.409+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Started ClientDeskApplication in 5.446 seconds (process running for 5.961)
-2026-08-17T01:36:37.513+05:30  INFO 30148 --- [ClientDesk] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-08-17T01:36:37.513+05:30  INFO 30148 --- [ClientDesk] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-08-17T01:36:37.515+05:30  INFO 30148 --- [ClientDesk] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2026-08-17T01:36:37.834+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-3] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
-	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
-	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
-
-2026-08-17T01:48:33.970+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.mapping.PropertyReferenceException: No property 'serviceName' found for type 'ProjectService']
-2026-08-17T01:48:34.991+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.mapping.PropertyReferenceException: No property 'serviceName' found for type 'ProjectService']
-2026-08-17T01:48:37.014+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.mapping.PropertyReferenceException: No property 'serviceName' found for type 'ProjectService']
-2026-08-17T01:48:45.930+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException: Cannot read field "intCompact" because "subtrahend" is null]
-2026-08-17T01:48:54.187+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException: Cannot read field "intCompact" because "subtrahend" is null]
-2026-08-17T01:48:57.346+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.NullPointerException: Cannot read field "intCompact" because "subtrahend" is null]
-2026-08-17T01:53:07.964+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.mapping.PropertyReferenceException: No property 'serviceName' found for type 'ProjectService']
-2026-08-17T01:53:08.982+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.mapping.PropertyReferenceException: No property 'serviceName' found for type 'ProjectService']
-2026-08-17T01:55:25.389+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.mapping.PropertyReferenceException: No property 'serviceName' found for type 'ProjectService']
-2026-08-17T01:55:26.405+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.mapping.PropertyReferenceException: No property 'serviceName' found for type 'ProjectService']
-2026-08-17T01:55:28.418+05:30  WARN 30148 --- [ClientDesk] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.springframework.data.mapping.PropertyReferenceException: No property 'serviceName' found for type 'ProjectService']
-2026-08-17T02:05:37.479+05:30  INFO 30148 --- [ClientDesk] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 151 class path changes (0 additions, 150 deletions, 1 modification)
-2026-08-17T02:05:37.485+05:30  INFO 30148 --- [ClientDesk] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-08-17T02:05:37.684+05:30  INFO 30148 --- [ClientDesk] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-08-17T02:05:37.691+05:30  INFO 30148 --- [ClientDesk] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T02:05:37.698+05:30  INFO 30148 --- [ClientDesk] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-08-17T02:05:37.705+05:30  INFO 30148 --- [ClientDesk] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2026-08-17T02:05:37.814+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Starting ClientDeskApplication using Java 17.0.12 with PID 30148 (X:\ClientDesk (1)\ClientDesk\target\classes started by irfan in X:\ClientDesk (1))
-2026-08-17T02:05:37.814+05:30 DEBUG 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Running with Spring Boot v3.5.14, Spring v6.2.18
-2026-08-17T02:05:37.814+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : No active profile set, falling back to 1 default profile: "default"
-2026-08-17T02:05:38.005+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-08-17T02:05:38.006+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 JPA repository interfaces.
-2026-08-17T02:05:38.087+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-08-17T02:05:38.088+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-08-17T02:05:38.088+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
-2026-08-17T02:05:38.110+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-08-17T02:05:38.110+05:30  INFO 30148 --- [ClientDesk] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 292 ms
-2026-08-17T02:05:38.134+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-08-17T02:05:38.137+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-08-17T02:05:38.145+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-08-17T02:05:38.146+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2026-08-17T02:05:38.156+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22310389
-2026-08-17T02:05:38.156+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2026-08-17T02:05:38.156+05:30  WARN 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-08-17T02:05:38.157+05:30  WARN 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2026-08-17T02:05:38.157+05:30  INFO 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
-	Database driver: undefined/unknown
-	Database version: 8.0
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-08-17T02:05:38.174+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-08-17T02:05:38.174+05:30  INFO 30148 --- [ClientDesk] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T02:05:38.212+05:30  WARN 30148 --- [ClientDesk] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-08-17T02:05:38.408+05:30  WARN 30148 --- [ClientDesk] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
-
-Using generated security password: c8256611-7750-4523-a538-a23427135001
-
-This generated password is for development use only. Your security configuration must be updated before running your application in production.
-
-2026-08-17T02:05:38.413+05:30  INFO 30148 --- [ClientDesk] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
-2026-08-17T02:05:38.458+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-08-17T02:05:38.471+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-08-17T02:05:38.476+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Started ClientDeskApplication in 0.691 seconds (process running for 1751.028)
-2026-08-17T02:05:38.481+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
-
-
-==========================
-CONDITION EVALUATION DELTA
-==========================
-
-
-Positive matches:
------------------
-
-   SpringBootWebSecurityConfiguration.SecurityFilterChainConfiguration matched:
-      - AllNestedConditions 2 matched 0 did not; NestedCondition on DefaultWebSecurityCondition.Beans @ConditionalOnMissingBean (types: org.springframework.security.web.SecurityFilterChain; SearchStrategy: all) did not find any beans; NestedCondition on DefaultWebSecurityCondition.Classes @ConditionalOnClass found required classes 'org.springframework.security.web.SecurityFilterChain', 'org.springframework.security.config.annotation.web.builders.HttpSecurity' (DefaultWebSecurityCondition)
-
-   UserDetailsServiceAutoConfiguration matched:
-      - @ConditionalOnClass found required class 'org.springframework.security.authentication.AuthenticationManager' (OnClassCondition)
-      - found 'session' scope (OnWebApplicationCondition)
-      - AnyNestedCondition 1 matched 2 did not; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.PasswordConfigured @ConditionalOnProperty (spring.security.user.password) did not find property 'spring.security.user.password'; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.NameConfigured @ConditionalOnProperty (spring.security.user.name) did not find property 'spring.security.user.name'; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.MissingAlternative @ConditionalOnMissingClass did not find unwanted classes 'org.springframework.security.oauth2.client.registration.ClientRegistrationRepository', 'org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector', 'org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository' (UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured)
-      - @ConditionalOnBean (types: org.springframework.security.config.ObjectPostProcessor; SearchStrategy: all) found beans 'objectPostProcessor', 'webAuthorizationManagerPostProcessor', 'filterChainDecoratorPostProcessor', 'authenticationManagerPostProcessor'; @ConditionalOnMissingBean (types: org.springframework.security.authentication.AuthenticationManager,org.springframework.security.authentication.AuthenticationProvider,org.springframework.security.core.userdetails.UserDetailsService,org.springframework.security.authentication.AuthenticationManagerResolver,org.springframework.security.oauth2.jwt.JwtDecoder; SearchStrategy: all) did not find any beans (OnBeanCondition)
-
-
-Negative matches:
------------------
-
-    None
-
-
-Exclusions:
------------
-
-    None
-
-
-Unconditional classes:
-----------------------
-
-    None
-
-
-
-2026-08-17T02:05:42.784+05:30  INFO 30148 --- [ClientDesk] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 150 class path changes (150 additions, 0 deletions, 0 modifications)
-2026-08-17T02:05:42.785+05:30  INFO 30148 --- [ClientDesk] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-08-17T02:05:42.906+05:30  INFO 30148 --- [ClientDesk] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-08-17T02:05:42.908+05:30  INFO 30148 --- [ClientDesk] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T02:05:42.908+05:30  INFO 30148 --- [ClientDesk] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2026-08-17T02:05:42.913+05:30  INFO 30148 --- [ClientDesk] [Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
-2026-08-17T02:05:42.994+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Starting ClientDeskApplication using Java 17.0.12 with PID 30148 (X:\ClientDesk (1)\ClientDesk\target\classes started by irfan in X:\ClientDesk (1))
-2026-08-17T02:05:42.994+05:30 DEBUG 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Running with Spring Boot v3.5.14, Spring v6.2.18
-2026-08-17T02:05:42.994+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : No active profile set, falling back to 1 default profile: "default"
-2026-08-17T02:05:43.255+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-08-17T02:05:43.296+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 8 JPA repository interfaces.
-2026-08-17T02:05:43.427+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-08-17T02:05:43.428+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-08-17T02:05:43.428+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
-2026-08-17T02:05:43.462+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-08-17T02:05:43.462+05:30  INFO 30148 --- [ClientDesk] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 466 ms
-2026-08-17T02:05:43.515+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-08-17T02:05:43.517+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-08-17T02:05:43.523+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-08-17T02:05:43.524+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
-2026-08-17T02:05:43.537+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@67dc4481
-2026-08-17T02:05:43.537+05:30  INFO 30148 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
-2026-08-17T02:05:43.538+05:30  WARN 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-08-17T02:05:43.538+05:30  WARN 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2026-08-17T02:05:43.538+05:30  INFO 30148 --- [ClientDesk] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
-	Database driver: undefined/unknown
-	Database version: 8.0
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-08-17T02:05:43.760+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-08-17T02:05:43.844+05:30  INFO 30148 --- [ClientDesk] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T02:05:43.941+05:30 DEBUG 30148 --- [ClientDesk] [restartedMain] c.p.C.s.jwt.JwtAuthenticationFilter      : Filter 'jwtAuthenticationFilter' configured for use
-2026-08-17T02:05:43.998+05:30  INFO 30148 --- [ClientDesk] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2026-08-17T02:05:44.000+05:30  WARN 30148 --- [ClientDesk] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2026-08-17T02:05:44.589+05:30  WARN 30148 --- [ClientDesk] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-08-17T02:05:44.860+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-08-17T02:05:44.872+05:30  INFO 30148 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-08-17T02:05:44.878+05:30  INFO 30148 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Started ClientDeskApplication in 1.909 seconds (process running for 1757.43)
-2026-08-17T02:05:44.880+05:30  INFO 30148 --- [ClientDesk] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation delta:
-
-
-==========================
-CONDITION EVALUATION DELTA
-==========================
-
-
-Positive matches:
------------------
-
-    None
-
-
-Negative matches:
------------------
-
-   SpringBootWebSecurityConfiguration.SecurityFilterChainConfiguration:
-      Did not match:
-         - AllNestedConditions 1 matched 1 did not; NestedCondition on DefaultWebSecurityCondition.Beans @ConditionalOnMissingBean (types: org.springframework.security.web.SecurityFilterChain; SearchStrategy: all) found beans of type 'org.springframework.security.web.SecurityFilterChain' securityFilterChain; NestedCondition on DefaultWebSecurityCondition.Classes @ConditionalOnClass found required classes 'org.springframework.security.web.SecurityFilterChain', 'org.springframework.security.config.annotation.web.builders.HttpSecurity' (DefaultWebSecurityCondition)
-
-   UserDetailsServiceAutoConfiguration:
-      Did not match:
-         - @ConditionalOnMissingBean (types: org.springframework.security.authentication.AuthenticationManager,org.springframework.security.authentication.AuthenticationProvider,org.springframework.security.core.userdetails.UserDetailsService,org.springframework.security.authentication.AuthenticationManagerResolver,org.springframework.security.oauth2.jwt.JwtDecoder; SearchStrategy: all) found beans of type 'org.springframework.security.authentication.AuthenticationManager' authenticationManager and found beans of type 'org.springframework.security.core.userdetails.UserDetailsService' customUserDetailsService and found beans of type 'org.springframework.security.authentication.AuthenticationProvider' authenticationProvider (OnBeanCondition)
-      Matched:
-         - @ConditionalOnClass found required class 'org.springframework.security.authentication.AuthenticationManager' (OnClassCondition)
-         - found 'session' scope (OnWebApplicationCondition)
-         - AnyNestedCondition 1 matched 2 did not; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.PasswordConfigured @ConditionalOnProperty (spring.security.user.password) did not find property 'spring.security.user.password'; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.NameConfigured @ConditionalOnProperty (spring.security.user.name) did not find property 'spring.security.user.name'; NestedCondition on UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured.MissingAlternative @ConditionalOnMissingClass did not find unwanted classes 'org.springframework.security.oauth2.client.registration.ClientRegistrationRepository', 'org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector', 'org.springframework.security.saml2.provider.service.registration.RelyingPartyRegistrationRepository' (UserDetailsServiceAutoConfiguration.MissingAlternativeOrUserPropertiesConfigured)
-
-
-Exclusions:
------------
-
-    None
-
-
-Unconditional classes:
-----------------------
-
-    None
-
-
-
-2026-08-17T02:06:15.969+05:30  INFO 30148 --- [ClientDesk] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-08-17T02:06:16.071+05:30  INFO 30148 --- [ClientDesk] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-08-17T02:06:16.073+05:30  INFO 30148 --- [ClientDesk] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T02:06:16.074+05:30  INFO 30148 --- [ClientDesk] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
-2026-08-17T02:06:16.077+05:30  INFO 30148 --- [ClientDesk] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
-2026-08-17T02:06:31.991+05:30  INFO 30636 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Starting ClientDeskApplication using Java 17.0.12 with PID 30636 (X:\ClientDesk (1)\ClientDesk\target\classes started by irfan in X:\ClientDesk (1))
-2026-08-17T02:06:31.994+05:30 DEBUG 30636 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Running with Spring Boot v3.5.14, Spring v6.2.18
-2026-08-17T02:06:31.994+05:30  INFO 30636 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : No active profile set, falling back to 1 default profile: "default"
-2026-08-17T02:06:32.027+05:30  INFO 30636 --- [ClientDesk] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2026-08-17T02:06:32.028+05:30  INFO 30636 --- [ClientDesk] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2026-08-17T02:06:32.780+05:30  INFO 30636 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-08-17T02:06:32.855+05:30  INFO 30636 --- [ClientDesk] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 8 JPA repository interfaces.
-2026-08-17T02:06:33.433+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2026-08-17T02:06:33.442+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-08-17T02:06:33.443+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.54]
-2026-08-17T02:06:33.487+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-08-17T02:06:33.487+05:30  INFO 30636 --- [ClientDesk] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1459 ms
-2026-08-17T02:06:33.586+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2026-08-17T02:06:33.633+05:30  INFO 30636 --- [ClientDesk] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.49.Final
-2026-08-17T02:06:33.661+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2026-08-17T02:06:33.847+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-08-17T02:06:33.870+05:30  INFO 30636 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2026-08-17T02:06:34.112+05:30  INFO 30636 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@68a7274b
-2026-08-17T02:06:34.115+05:30  INFO 30636 --- [ClientDesk] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2026-08-17T02:06:34.155+05:30  WARN 30636 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2026-08-17T02:06:34.157+05:30  WARN 30636 --- [ClientDesk] [restartedMain] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2026-08-17T02:06:34.173+05:30  INFO 30636 --- [ClientDesk] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
-	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
-	Database driver: undefined/unknown
-	Database version: 8.0
-	Autocommit mode: undefined/unknown
-	Isolation level: undefined/unknown
-	Minimum pool size: undefined/unknown
-	Maximum pool size: undefined/unknown
-2026-08-17T02:06:35.212+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-08-17T02:06:35.320+05:30  INFO 30636 --- [ClientDesk] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T02:06:35.563+05:30 DEBUG 30636 --- [ClientDesk] [restartedMain] c.p.C.s.jwt.JwtAuthenticationFilter      : Filter 'jwtAuthenticationFilter' configured for use
-2026-08-17T02:06:35.620+05:30  INFO 30636 --- [ClientDesk] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2026-08-17T02:06:35.621+05:30  WARN 30636 --- [ClientDesk] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2026-08-17T02:06:35.718+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
-2026-08-17T02:06:36.568+05:30  WARN 30636 --- [ClientDesk] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-08-17T02:06:37.106+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2026-08-17T02:06:37.136+05:30  INFO 30636 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2026-08-17T02:06:37.144+05:30  INFO 30636 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Started ClientDeskApplication in 5.529 seconds (process running for 5.925)
-2026-08-17T02:06:37.281+05:30  INFO 30636 --- [ClientDesk] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-08-17T02:06:37.281+05:30  INFO 30636 --- [ClientDesk] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-08-17T02:06:37.282+05:30  INFO 30636 --- [ClientDesk] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-08-17T02:06:37.603+05:30  WARN 30636 --- [ClientDesk] [http-nio-8080-exec-3] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
-	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
-	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
-
-2026-08-17T02:07:24.989+05:30  INFO 30636 --- [ClientDesk] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
-2026-08-17T02:07:25.095+05:30  INFO 30636 --- [ClientDesk] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
-2026-08-17T02:07:25.101+05:30  INFO 30636 --- [ClientDesk] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2026-08-17T02:07:25.104+05:30  INFO 30636 --- [ClientDesk] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2026-08-17T02:07:25.110+05:30  INFO 30636 --- [ClientDesk] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-20T00:07:25.773+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-20T00:07:25.937+05:30  INFO 19740 --- [ClientDesk] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-20T00:07:26.391+05:30 DEBUG 19740 --- [ClientDesk] [restartedMain] c.p.C.s.jwt.JwtAuthenticationFilter      : Filter 'jwtAuthenticationFilter' configured for use
+2026-08-20T00:07:26.462+05:30  INFO 19740 --- [ClientDesk] [restartedMain] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-08-20T00:07:26.464+05:30  WARN 19740 --- [ClientDesk] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-08-20T00:07:26.600+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-20T00:07:28.133+05:30  WARN 19740 --- [ClientDesk] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-20T00:07:29.198+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-08-20T00:07:29.292+05:30  INFO 19740 --- [ClientDesk] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-08-20T00:07:29.305+05:30  INFO 19740 --- [ClientDesk] [restartedMain] c.p.ClientDesk.ClientDeskApplication     : Started ClientDeskApplication in 11.26 seconds (process running for 11.797)

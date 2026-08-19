@@ -20,12 +20,10 @@ public class DashboardSummaryDTO {
 
     private BigDecimal totalRevenue;
     private BigDecimal outstandingAmount;
-    private BigDecimal totalPaymentsReceived;
 
     private long paidInvoices;
     private long partiallyPaidInvoices;
     private long overdueInvoices;
 
-    private long pendingDeliverables;
-    private long completedDeliverables;
+
 }

@@ -24,6 +24,15 @@ public interface ProjectServiceRepository extends JpaRepository<ProjectService,L
 
     void deleteByProjectAndServiceCatalogue(Project project,ServiceCatalogue serviceCatalogue);
 
-    @Query("SELECT ps.serviceCatalogue.id,ps.serviceCatalogue.serviceName,COUNT(ps) FROM ProjectService ps GROUP BY ps.serviceCatalogue.id, ps.serviceCatalogue.serviceName ORDER BY COUNT(ps) DESC")
-    List<MostRequestedServices> findMostRequestedServices();
+    @Query("""
+    SELECT
+        ps.serviceCatalogue.id AS id,
+        ps.serviceCatalogue.serviceName AS serviceName,
+        COUNT(ps) AS count
+    FROM ProjectService ps
+    GROUP BY
+        ps.serviceCatalogue.id,
+        ps.serviceCatalogue.serviceName
+    ORDER BY COUNT(ps) DESC
+""")    List<MostRequestedServices> findMostRequestedServices();
 }

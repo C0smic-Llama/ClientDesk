@@ -24,7 +24,7 @@ public class DashboardController {
 
     @GetMapping("/summary")
     public ResponseEntity<DashboardSummaryDTO> getMainDashboardDetails(){
-        return ResponseEntity.ok(dashboardService.getDashbaordSummary());
+        return ResponseEntity.ok(dashboardService.getDashboardSummary());
     }
 
     @GetMapping("/revenue")
@@ -34,7 +34,7 @@ public class DashboardController {
 
     @GetMapping("/top-clients")
     public ResponseEntity<List<DashboardRankingDTO>> getTopClients(){
-        return ResponseEntity.ok(dashboardService.getTopCLients());
+        return ResponseEntity.ok(dashboardService.getTopClients());
     }
 
     @GetMapping("/services")
