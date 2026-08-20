@@ -14,11 +14,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.web.bind.annotation.*;
 
 
 @Tag(name = "User Management")
 @RestController
+@PreAuthorize("hasRole('ADMIN')")
 @RequestMapping("/api/users")
 @RequiredArgsConstructor
 public class UserController {

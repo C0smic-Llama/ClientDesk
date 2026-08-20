@@ -33,7 +33,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     private String generateReceiptNumber() {
         long count = paymentRepository.count() + 1;
-        return String.format("RCPT-%d=-%05d", Year.now().getValue(), count);
+        return String.format("RCT-%d%05d", Year.now().getValue(), count);
     }
 
     private Invoice getInvoice(Long invoiceId) {
